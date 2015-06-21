@@ -1,5 +1,12 @@
-Il reparto marketing capisce che il simulatore ha bisogno di un boost rispetto ai competitor e dopo studi di mercato
-salta fuori che se si aggiungesse la possibilità di volare alle anatre, si andrebbe alla grande.
+Piccolo problema, il simulatore mostra anatre di gomma che volano, questo non può andare bene.
+Potremmo risolvere facendo override dei metodi che devono cambiare ma ogni volta che aggiungeremo una nuova anatra
+dovremo ripetere la procedura con conseguente ripetizione di codice.
 
-Per soddisfare la richiesta si decide di aggiungere un metodo fly alla classe padre Duck così che tutte le anatre
-ereditino il comportamento.
+La cosa da fare è identificare quali sono le parti della class Duck che varieranno e portarli fuori dalla nostra classe.
+Questo renderà il codice molto più flessibile e pronto ai cambiamenti.
+
+Per farlo tiriamo fuori un set di classi per quack e un set di classi per fly, i due comportamenti variabili.
+La cosa importante è programmare su un interfaccia, cioè usare appunto quest'ultima all'interno delle classi client.
+Quindi Duck userà delle interfacce QuackBehavior e FlyBehavior che riceveranno poi delle classi che le implementeranno.
+
+Le varie implementazioni saranno istanziate dai costruttori delle classi delle anatre.

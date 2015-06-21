@@ -1,8 +1,2 @@
-Grazie al fatto che abbiamo astratto i comportamenti variabili e ne abbiamo fatto dei field della class duck, utilizzando
-quindi quella che viene chiamata composizione, adesso siamo ingrado addirittura di modificare il comportamento di
-una classe a runtime.
-
-Un esempio, possiamo fare in modo che una anatra di gomma che non può volare, riesca a fare il grande salto con un
-comportamento diverso.
-
-Basta rendere i field accessibili tramite dei setter.
+Nel package strategy è riportata la struttura classi generica per questo pattern e nella cartella resources il class
+diagram.

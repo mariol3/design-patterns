@@ -15,4 +15,8 @@ public abstract class Duck {
 
     public abstract void display();
 
+    public void fly() {
+        System.out.println("Flying!");
+    }
+
 }

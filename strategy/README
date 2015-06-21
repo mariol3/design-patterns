@@ -1,4 +1,5 @@
-Abbiamo un simulatore di Anatre.
-La scelta di design iniziale è stata una classe padre astratta chiamata Duck che fornisce l'implementazione di quack e
-di swim siccome tutte le anatre lo fanno. Il metodo display invece viene lasciato astratto e implementato dalle varie
-sottoclassi che estenderanno la classe padre.
+Il reparto marketing capisce che il simulatore ha bisogno di un boost rispetto ai competitor e dopo studi di mercato
+salta fuori che se si aggiungesse la possibilità di volare alle anatre, si andrebbe alla grande.
+
+Per soddisfare la richiesta si decide di aggiungere un metodo fly alla classe padre Duck così che tutte le anatre
+ereditino il comportamento.

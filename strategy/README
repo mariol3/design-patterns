@@ -1,0 +1,4 @@
+Abbiamo un simulatore di Anatre.
+La scelta di design iniziale è stata una classe padre astratta chiamata Duck che fornisce l'implementazione di quack e
+di swim siccome tutte le anatre lo fanno. Il metodo display invece viene lasciato astratto e implementato dalle varie
+sottoclassi che estenderanno la classe padre.

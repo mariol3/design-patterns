@@ -1,12 +1,8 @@
-Piccolo problema, il simulatore mostra anatre di gomma che volano, questo non può andare bene.
-Potremmo risolvere facendo override dei metodi che devono cambiare ma ogni volta che aggiungeremo una nuova anatra
-dovremo ripetere la procedura con conseguente ripetizione di codice.
+Grazie al fatto che abbiamo astratto i comportamenti variabili e ne abbiamo fatto dei field della class duck, utilizzando
+quindi quella che viene chiamata composizione, adesso siamo ingrado addirittura di modificare il comportamento di
+una classe a runtime.
 
-La cosa da fare è identificare quali sono le parti della class Duck che varieranno e portarli fuori dalla nostra classe.
-Questo renderà il codice molto più flessibile e pronto ai cambiamenti.
+Un esempio, possiamo fare in modo che una anatra di gomma che non può volare, riesca a fare il grande salto con un
+comportamento diverso.
 
-Per farlo tiriamo fuori un set di classi per quack e un set di classi per fly, i due comportamenti variabili.
-La cosa importante è programmare su un interfaccia, cioè usare appunto quest'ultima all'interno delle classi client.
-Quindi Duck userà delle interfacce QuackBehavior e FlyBehavior che riceveranno poi delle classi che le implementeranno.
-
-Le varie implementazioni saranno istanziate dai costruttori delle classi delle anatre.
+Basta rendere i field accessibili tramite dei setter.

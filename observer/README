@@ -1,7 +1,18 @@
-Proviamo quindi a creare una prima implementazione.
-Questa funziona ma subito saltano all'occhio alcune cose che non vanno:
-- Stiamo chiamando implementazioni concrete dell'interfaccia Display, questo vuol dire che non riusciremo a fare aggiunte
-  di display senza modificare il codice (molto male visto che ci sarà uno store di display in futuro)
-- Non abbiamo astratto e incapsulato le parti che variano (come da principio di design visto in precedenza)
+Qui entra in gioco l'Observer pattern.
+Questo design pattern ruota attorno a due entità principali:
+ - Subject (Soggetto): detentore dell'informazione e che si occuperà di notificare i suoi cambiamenti di stato.
+ - Observer (Osservatore): colui che richiede al Subject di essere notificato o meno riguardo i cambiamenti di stato.
 
-Dobbiamo trovare una strada alternativa.
+Quindi questo pattern definisce una dipendenza uno-a-molti tra il subject e i suoi observer. Ogni volta che lo stato
+del subject cambierà, quest'ultimo notificherà questo evento a tutti i suoi observer registrati (subscribed) i quali
+potranno reagire di consguenza.
+
+Le classi sono nel package observer mentre il diagramma si trova nella cartella resources.
+
+I vantaggi di questo approccio sono:
+ - L 'unica cosa che il subject deve conoscere è l'interfaccia observer, nient'altro.
+ - Possiamo aggiungere nuovi observer quando vogliamo
+ - Non dobbiamo modificare il subject per aggiungere observer (come nel caso della WeatherData al momento)
+ - Le due classi sono indipendenti tra loro
+
+Questo è il potere del basso accoppiamento (loose coupling)

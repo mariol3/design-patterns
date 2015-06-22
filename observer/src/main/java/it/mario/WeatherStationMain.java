@@ -1,11 +1,11 @@
-package it.mario.weatherstation;
+package it.mario;
 
 import it.mario.weatherstation.data.WeatherData;
 
 /**
  * Created by Mario Grimaldi <mario.grimaldi89@gmail.com> with <3
  */
-public class Main {
+public class WeatherStationMain {
 
     public static void main(String[] args) {
         WeatherData weatherData = new WeatherData();

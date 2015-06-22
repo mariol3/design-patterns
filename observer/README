@@ -1,16 +1,7 @@
-Una compagnia che raccoglie dati metereologici possiede una stazione che attraverso sensori di umidità, pressione e
-temperatura produce un WeatherData object che può essere gestito per fornire varie informazioni.
-Quello che vogliamo mostrare tramite questo oggetto sono:
- - Le attuali condizioni meteo
- - Statistiche
- - Previsioni
-Queste informazioni ovviamente devono essere sempre aggiornate con i dati in continuo divenire del WeatherData object.
+Proviamo quindi a creare una prima implementazione.
+Questa funziona ma subito saltano all'occhio alcune cose che non vanno:
+- Stiamo chiamando implementazioni concrete dell'interfaccia Display, questo vuol dire che non riusciremo a fare aggiunte
+  di display senza modificare il codice (molto male visto che ci sarà uno store di display in futuro)
+- Non abbiamo astratto e incapsulato le parti che variano (come da principio di design visto in precedenza)
 
-La WeatherData ci viene fornita come API.
-Guardando la classe notiamo che abbiamo dei getter rispettivamente per le misure di umidità, pressione e temperatura.
-Inoltre gli sviluppatori dell'app ci hanno lasciato un commento mostrandoci il nostro entry point cioè il metodo che
-verrà chiamato ogni volta che i dati cambieranno e che quindi dovremo implementare per le 3 tipologie di
-visualizzazione.
-
-Cosa importante, in futuro le tipologie di visualizzazione saranno sviluppabili esternamente mediante api, quindi
-il codice deve essere aperto a queste nuove funzionalità.
+Dobbiamo trovare una strada alternativa.

@@ -1,24 +1,25 @@
 package it.mario.weatherstation.displays.impl;
 
-import it.mario.weatherstation.Observer;
-import it.mario.weatherstation.Subject;
 import it.mario.weatherstation.data.WeatherData;
 import it.mario.weatherstation.displays.Display;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Mario Grimaldi <mario.grimaldi89@gmail.com> with <3
  */
 public class StatisticsDisplay implements Observer, Display {
 
-    private final Subject weatherData;
+    private final Observable observable;
     private double maxTemp = Double.MIN_VALUE;
     private double minTemp = Double.MAX_VALUE;
     private double avgTemp = 0;
     private int tempCounter = 0;
 
-    public StatisticsDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        weatherData.registerObserver(this);
+    public StatisticsDisplay(WeatherData observable) {
+        this.observable = observable;
+        this.observable.addObserver(this);
     }
 
     @Override
@@ -27,11 +28,16 @@ public class StatisticsDisplay implements Observer, Display {
     }
 
     @Override
-    public void update(double temperature, double pressure, double humidity) {
-        maxTemp = temperature > maxTemp ? temperature : maxTemp;
-        minTemp = temperature < minTemp ? temperature : minTemp;
-        avgTemp = (avgTemp+temperature) / ++tempCounter;
-        display();
-    }
+    public void update(Observable observable, Object o) {
+        if (observable instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData) observable;
+            double temperature = weatherData.getTemperature();
 
+            maxTemp = temperature > maxTemp ? temperature : maxTemp;
+            minTemp = temperature < minTemp ? temperature : minTemp;
+            avgTemp = (avgTemp+temperature) / ++tempCounter;
+
+            display();
+        }
+    }
 }

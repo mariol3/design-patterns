@@ -1,54 +1,31 @@
 package it.mario.weatherstation.data;
 
-import it.mario.weatherstation.Observer;
-import it.mario.weatherstation.Subject;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Observable;
 
 /**
  * Created by Mario Grimaldi <mario.grimaldi89@gmail.com> with <3
  */
-public class WeatherData implements Subject {
+public class WeatherData extends Observable {
 
-    List<Observer> observers;
     double temperature;
     double pressure;
     double humidity;
 
-    public WeatherData() {
-        observers = new ArrayList<Observer>();
-    }
-
-    private double getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    private double getPressure() {
+    public double getPressure() {
         return pressure;
     }
 
-    private double getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
     public void measurementsChanged() {
+        setChanged();
         notifyObservers();
-    }
-
-    @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(Observer o) {
-        if (observers.contains(o)) observers.remove(o);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer o : observers) o.update(getTemperature(), getPressure(), getHumidity());
     }
 
     public void setMeasurements(double temperature, double pressure, double humidity) {

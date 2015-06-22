@@ -1,2 +1,1 @@
-Implementando l'observer sulle nostre classi ottenniamo il risultato seguente. Molto più fico ;)
-Non è stato implementato il forecast perché ripetitivo ma si capisce il concetto!
+Java fornisce la sua implementazione dell'observer tramite la classe Observable e l'interfaccia Observer.

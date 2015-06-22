@@ -5,6 +5,6 @@ package it.mario.weatherstation.displays;
  */
 public interface Display {
 
-    void update(double temperature, double pressure, double humidity);
+    void display();
 
 }

@@ -1,18 +1,2 @@
-Qui entra in gioco l'Observer pattern.
-Questo design pattern ruota attorno a due entità principali:
- - Subject (Soggetto): detentore dell'informazione e che si occuperà di notificare i suoi cambiamenti di stato.
- - Observer (Osservatore): colui che richiede al Subject di essere notificato o meno riguardo i cambiamenti di stato.
-
-Quindi questo pattern definisce una dipendenza uno-a-molti tra il subject e i suoi observer. Ogni volta che lo stato
-del subject cambierà, quest'ultimo notificherà questo evento a tutti i suoi observer registrati (subscribed) i quali
-potranno reagire di consguenza.
-
-Le classi sono nel package observer mentre il diagramma si trova nella cartella resources.
-
-I vantaggi di questo approccio sono:
- - L 'unica cosa che il subject deve conoscere è l'interfaccia observer, nient'altro.
- - Possiamo aggiungere nuovi observer quando vogliamo
- - Non dobbiamo modificare il subject per aggiungere observer (come nel caso della WeatherData al momento)
- - Le due classi sono indipendenti tra loro
-
-Questo è il potere del basso accoppiamento (loose coupling)
+Implementando l'observer sulle nostre classi ottenniamo il risultato seguente. Molto più fico ;)
+Non è stato implementato il forecast perché ripetitivo ma si capisce il concetto!

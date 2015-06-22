@@ -1,47 +1,60 @@
 package it.mario.weatherstation.data;
 
-import it.mario.weatherstation.displays.Display;
-import it.mario.weatherstation.displays.impl.CurrentConditionsDisplay;
-import it.mario.weatherstation.displays.impl.ForecastDisplay;
-import it.mario.weatherstation.displays.impl.StatisticsDisplay;
+import it.mario.weatherstation.Observer;
+import it.mario.weatherstation.Subject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Mario Grimaldi <mario.grimaldi89@gmail.com> with <3
  */
-public class WeatherData {
+public class WeatherData implements Subject {
 
+    List<Observer> observers;
     double temperature;
     double pressure;
     double humidity;
-    private Display currentConditionsDisplay;
-    private Display statisticsDisplay;
-    private Display forecastDisplay;
 
     public WeatherData() {
-        currentConditionsDisplay = new CurrentConditionsDisplay();
-        statisticsDisplay = new StatisticsDisplay();
-        forecastDisplay = new ForecastDisplay();
+        observers = new ArrayList<Observer>();
     }
 
-    public double getTemperature() {
+    private double getTemperature() {
         return temperature;
     }
 
-    public double getPressure() {
+    private double getPressure() {
         return pressure;
     }
 
-    public double getHumidity() {
+    private double getHumidity() {
         return humidity;
     }
 
     public void measurementsChanged() {
-        double t = getTemperature();
-        double p = getPressure();
-        double h = getHumidity();
+        notifyObservers();
+    }
 
-        currentConditionsDisplay.update(t, p, h);
-        statisticsDisplay.update(t, p, h);
-        forecastDisplay.update(t, p, h);
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        if (observers.contains(o)) observers.remove(o);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer o : observers) o.update(getTemperature(), getPressure(), getHumidity());
+    }
+
+    public void setMeasurements(double temperature, double pressure, double humidity) {
+        this.temperature = temperature;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        measurementsChanged();
     }
 }

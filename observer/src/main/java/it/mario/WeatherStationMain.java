@@ -1,6 +1,8 @@
 package it.mario;
 
 import it.mario.weatherstation.data.WeatherData;
+import it.mario.weatherstation.displays.impl.CurrentConditionsDisplay;
+import it.mario.weatherstation.displays.impl.StatisticsDisplay;
 
 /**
  * Created by Mario Grimaldi <mario.grimaldi89@gmail.com> with <3
@@ -10,11 +12,12 @@ public class WeatherStationMain {
     public static void main(String[] args) {
         WeatherData weatherData = new WeatherData();
 
-        weatherData.measurementsChanged();
+        CurrentConditionsDisplay currentConditionsDisplay = new CurrentConditionsDisplay(weatherData);
+        StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
 
-        System.out.println("waiting new data...");
-
-        weatherData.measurementsChanged();
+        weatherData.setMeasurements(25, 2, 28);
+        weatherData.setMeasurements(30, 2, 70);
+        weatherData.setMeasurements(22, 2, 90);
     }
 
 }
